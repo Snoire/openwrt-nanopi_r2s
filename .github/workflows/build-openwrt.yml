@@ -116,6 +116,11 @@ jobs:
       if: (!cancelled())
       run: df -hT
 
+    - name: List bin files
+      if: (!cancelled())
+      run: |
+        ls -l openwrt/bin/targets/*/*
+
     - name: Upload bin directory
       uses: actions/upload-artifact@main
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
